@@ -18,6 +18,7 @@
 						<td><%= link_to p.name, p %></td>
 						<th><%= p.url %></th>
 						<th><%= p.description %></th>
+						<th><%= link_to "Editar", edit_product_path(p) %></th>
 					</tr>
 				<% end %>
 			</table>
