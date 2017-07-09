@@ -15,7 +15,7 @@
 				<% @products.each do |p| %>
 					<tr>
 						<th><%= p.id %></th>
-						<th><%= p.name %></th>
+						<td><%= link_to p.name, p %></td>
 						<th><%= p.url %></th>
 						<th><%= p.description %></th>
 					</tr>
