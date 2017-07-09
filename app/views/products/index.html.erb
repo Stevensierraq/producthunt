@@ -1,1 +1,17 @@
-<h1>Hola PH</h1>
+<h1>Productos</h1>
+<table>
+	<tr>
+		<th>Id</th>
+		<th>Nombre</th>
+		<th>URL</th>
+		<th>Descripcion</th>
+	</tr>
+	<% @products.each do |p| %>
+		<tr>
+			<th><%= p.id %></th>
+			<th><%= p.name %></th>
+			<th><%= p.url %></th>
+			<th><%= p.description %></th>
+		</tr>
+	<% end %>
+</table>
