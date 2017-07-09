@@ -18,7 +18,10 @@
 						<td><%= link_to p.name, p %></td>
 						<th><%= p.url %></th>
 						<th><%= p.description %></th>
-						<th><%= link_to "Editar", edit_product_path(p) %></th>
+						<th>
+							<%= link_to "Editar", edit_product_path(p) %>
+							<%= link_to "Eliminar", p, method: :delete, data: {confirm: "Seguro de seas eliminar el producto #{p.name}"} %>		
+						</th>
 					</tr>
 				<% end %>
 			</table>
