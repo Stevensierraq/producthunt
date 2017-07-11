@@ -1,4 +1,8 @@
 class SessionsController < ApplicationController
+
+  before_action :private_access, only: [:destroy]
+  before_action :public_access, exept: [:destroy]
+
   def new
   end
 
@@ -10,5 +14,10 @@ class SessionsController < ApplicationController
   	else
   		render :new
   	end
+  end
+
+  def destroy
+    sign_out
+    redirect_to root_path
   end
 end

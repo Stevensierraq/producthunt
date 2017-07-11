@@ -23,4 +23,12 @@ class ApplicationController < ActionController::Base
      rescue ActiveRecord::RecordNotFound
     end
   	helper_method :current_user
+
+    def private_access
+      redirect_to :login unless signed_in?
+    end
+
+    def public_access
+      redirect_to products_path if signed_in?
+    end
 end

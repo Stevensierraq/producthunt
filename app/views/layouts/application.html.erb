@@ -14,7 +14,7 @@
   	<% end %>
 
     <% if signed_in? %>
-      <div class="alert alert-info"> Hola <%= current_user.name %></div>
+      <div class="alert alert-info"> Hola <%= current_user.name %> <%= link_to "Salir", logout_path, method: :delete  %></div>
     <% end %>
 
     <%= yield %>
