@@ -1,7 +1,7 @@
 <div class="product-page">
 	<header class="product-header" <%= header_style %>>
 		<h1><%= @product.name %></h1>
-		<p><%= @product.description %></p>
+		<p><%= raw @product.description %></p>
 		<a href="<%= @product.url %>" class = "btn btn-primary btn-lg" target="_blank">Detalle!</a>
 		<% if signed_in? && @product.user == current_user %>
 			<div class="actions">
