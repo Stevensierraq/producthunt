@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'uploads/new'
+
   mount Ckeditor::Engine => '/ckeditor'
 	root 'products#index'
 
@@ -11,8 +13,9 @@ Rails.application.routes.draw do
 	resources :products do
 		resource :vote, only: [:create, :destroy]
 		resources :comments, only: [:create]
+		
 	end
-	
+	resources :uploads
 	
 
 end

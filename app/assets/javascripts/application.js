@@ -15,4 +15,11 @@
 //= require jquery3
 //= require bootstrap-sprockets
 //= require ckeditor/init
+//= require dropzone
 //= require_tree .
+
+$(document).on("turbolinks:load", function() {
+  $('.ckeditor').each(function() {
+    CKEDITOR.replace($(this).attr('id'));
+  });
+});

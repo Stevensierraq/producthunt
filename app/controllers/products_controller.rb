@@ -14,9 +14,11 @@ class ProductsController < ApplicationController
 		@product = Product.new(product_params)
 		@product.user = current_user
 		if @product.save
-			redirect_to products_path, notice: "Producto publicado exitosamente :)"
+			render json: { messages: "success", fileId: @product.id }, :status => 200
+			#redirect_to products_path, notice: "Producto publicado exitosamente :)"
 		else
-			render :new
+			render json: { messages: @product.errors.full_messages.join(',')}, :status =>400
+			#render :new
 		end
 	end
 
@@ -31,7 +33,8 @@ class ProductsController < ApplicationController
 	def update
 		product = Product.find(params[:id])
 		if product.update(product_params)
-			redirect_to products_path, notice: "El producto ha sido actualizado con exito"
+			#redirect_to products_path, notice: "El producto ha sido actualizado con exito"
+			render json: { messages: "success"}, :status => 200
 		else
 			render :edit
 		end

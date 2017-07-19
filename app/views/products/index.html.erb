@@ -1,40 +1,37 @@
 <div class="container">
-	<div class="row">
-		<div class="col-sm-10 col-sm-offset-1">
-			<div class="products">
-				<% @products.each do |product| %>
-				<div class="product cleardix">
-					<% if product.voted_by? current_user %>
-						<%= link_to product_vote_path(product), method: :delete, class: "product-upvote upvote-active" do %>
-							<span class="upvote-arrow"></span>
-							<span class="upvote-count"><%= product.votes.count %></span>
-						<% end %>
-					<% else %>
-						<%= link_to product_vote_path(product), method: :post, class: "product-upvote" do %>
-							<span class="upvote-arrow"></span>
-							<span class="upvote-count"><%= product.votes.count %></span>
-						<% end %>
-					<% end %>
-					<% if product.image.exists? %>
-						<div class="product-img">
-							<% image_tag product.image.url(:thumb) %>
-						</div>
-					<% end %>
-					<div class="product-details">
-						<span class="product-title">
-							<%= link_to product.name, product %>
-						</span>
-						<span class="product-description">
-							<%= raw product.description %>
-						</span>
-					</div>
-					<div class="product-comments">
-						<span class="glyphicon glyphicon-comment"></span>
-						<span class="comment-count"><%= product.comments.count %></span>
-					</div>
-				</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+      
+      <div class="products">
+        <% @products.each do |product| %>
+        <div class="product clearfix">
+          <% if product.voted_by? current_user %>
+            <%= link_to product_vote_path(product), method: :delete, class: "product-upvote upvote-active" do %>
+              <span class="upvote-arrow"></span>
+              <span class="upvote-count"><%= product.votes.count %></span>
+            <% end %>
+          <% else %>
+            <%= link_to product_vote_path(product), method: :post, class: "product-upvote" do %>
+              <span class="upvote-arrow"></span>
+              <span class="upvote-count"><%= product.votes.count %></span>
+            <% end %>
+          <% end %>
+          <% if product.image.exists? %>
+            <div class="product-img">
+              <%= image_tag product.image.url(:thumb) %>
+            </div>
+          <% end %>
+          <div class="product-details">
+            <span class="product-title"><%= link_to product.name, product %></span>
+            <span class="product-description"><%= raw product.description %></span>
+          </div>
+          <div class="product-comments">
+            <span class="glyphicon glyphicon-comment"></span>
+            <span class="comment-count"><%= product.comments.count %></span>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
